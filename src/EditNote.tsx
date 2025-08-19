@@ -1,14 +1,20 @@
 import { motion } from "framer-motion";
 import type { NoteData, Tag } from "./App";
 import { NoteForm } from "./NoteForm";
+import { useNote } from "./NoteLayout";
 
-type NewNotePropos = {
-  onSubmit: (data: NoteData) => void;
+type EditNotePropos = {
+  onSubmit: (id: string, data: NoteData) => void;
   onAddTag: (tag: Tag) => void;
   availableTags: Tag[];
 };
 
-export function NewNote({ onSubmit, onAddTag, availableTags }: NewNotePropos) {
+export function EditNote({
+  onSubmit,
+  onAddTag,
+  availableTags,
+}: EditNotePropos) {
+  const note = useNote();
   return (
     <>
       <motion.div
@@ -17,9 +23,12 @@ export function NewNote({ onSubmit, onAddTag, availableTags }: NewNotePropos) {
         exit={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="mb-4">New Note</h1>
+        <h1 className="mb-4">Edit Note</h1>
         <NoteForm
-          onSubmit={onSubmit}
+          title={note.title}
+          markdown={note.markdown}
+          tags={note.tags}
+          onSubmit={(data) => onSubmit(note.id, data)}
           onAddTag={onAddTag}
           availableTags={availableTags}
         />
