@@ -31,6 +31,10 @@
     }
   },
 
+  "NewNote": {
+    "title": "Stwórz nową notatkę"
+  },
+
   "NoteForm": {
     "title": "Wprowadź nazwę notatki",
     "tag": "Stwórz lub wybierz tag, opcjonalne",

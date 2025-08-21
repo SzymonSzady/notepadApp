@@ -31,6 +31,10 @@
     }
   },
 
+  "NewNote": {
+    "title": "Create new note"
+  },
+
   "NoteForm": {
     "title": "Input name of the note",
     "tag": "Create or select tag, not requireid",
