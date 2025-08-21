@@ -14,6 +14,7 @@ import ReactSelect from "react-select";
 import type { Tag } from "./App";
 import styles from "./NoteList.module.css";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type SimplifiedNote = {
   tags: Tag[];
@@ -51,6 +52,7 @@ export function NoteList({
       window.location.reload(); // Odświeża stronę po czyszczeniu
     }
   };
+  const { t } = useTranslation();
 
   const filteredNotes = useMemo(() => {
     return notes.filter((note) => {
@@ -69,25 +71,23 @@ export function NoteList({
     <>
       <Row className="align-items-center mb-4">
         <Col>
-          <h1>Notes</h1>
+          <h1>{t("NoteList.Row.title")}</h1>
         </Col>
         <Col xs="auto">
           <Stack gap={2} direction="horizontal">
             <Link to="/new">
-              <Button variant="primary">Create</Button>
+              <Button variant="primary">
+                {t("NoteList.Row.Button.create")}
+              </Button>
             </Link>
             <Button
               onClick={() => setEditTagsModalIsOpen(true)}
               variant="outline-secondary"
             >
-              Edit Tags
+              {t("NoteList.Row.Button.editTags")}
             </Button>
-            <Button
-              onClick={handleClearLocalStorage}
-              variant="outline-danger"
-              title="Wyczyść wszystkie dane w localStorage"
-            >
-              Clear Storage
+            <Button onClick={handleClearLocalStorage} variant="outline-danger">
+              {t("NoteList.Row.Button.clearStorage")}
             </Button>
           </Stack>
         </Col>
@@ -96,7 +96,7 @@ export function NoteList({
         <Row className="mb-4">
           <Col>
             <Form.Group controlId="title">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>{t("NoteList.Form.Row.noteName")}</Form.Label>
               <Form.Control
                 type="text"
                 value={title}
@@ -106,7 +106,7 @@ export function NoteList({
           </Col>
           <Col>
             <Form.Group controlId="tags">
-              <Form.Label>Tag</Form.Label>
+              <Form.Label>{t("NoteList.Form.Row.noteTag")}</Form.Label>
               <ReactSelect
                 value={selectedTags.map((tag) => {
                   return { label: tag.label, value: tag.id };
@@ -125,6 +125,7 @@ export function NoteList({
                   );
                 }}
                 isMulti
+                placeholder={t("NoteList.Form.Row.select")}
               />
             </Form.Group>
           </Col>
@@ -194,6 +195,7 @@ function EditTagsModal({
   onUpdateTag,
   onDeleteTag,
 }: EditTagsModalProps) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -203,7 +205,7 @@ function EditTagsModal({
     >
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Tags</Modal.Title>
+          <Modal.Title>{t("NoteList.Modal.title")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>

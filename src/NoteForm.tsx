@@ -5,6 +5,7 @@ import CreatableReactSelect from "react-select/creatable";
 import type { NoteData, Tag } from "./App";
 import { v4 as uuidV4 } from "uuid";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void;
@@ -24,6 +25,7 @@ export function NoteForm({
   const markdownRef = useRef<HTMLTextAreaElement>(null);
   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -49,13 +51,13 @@ export function NoteForm({
           <Row>
             <Col>
               <Form.Group controlId="title">
-                <Form.Label>Title</Form.Label>
+                <Form.Label>{t("NoteForm.title")}</Form.Label>
                 <Form.Control ref={titleRef} required defaultValue={title} />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group controlId="tags">
-                <Form.Label>Tag</Form.Label>
+                <Form.Label>{t("NoteForm.tag")}</Form.Label>
                 <CreatableReactSelect
                   onCreateOption={(label) => {
                     const newTag = { id: uuidV4(), label };
@@ -84,7 +86,7 @@ export function NoteForm({
             </Col>
           </Row>
           <Form.Group controlId="markdown">
-            <Form.Label>Body</Form.Label>
+            <Form.Label>{t("NoteForm.body")}</Form.Label>
             <Form.Control
               defaultValue={markdown}
               required
@@ -95,11 +97,11 @@ export function NoteForm({
           </Form.Group>
           <Stack direction="horizontal" gap={2} className="justify-content-end">
             <Button type="submit" variant="primary">
-              Save
+              {t("NoteForm.Button.save")}
             </Button>
             <Link to="..">
               <Button type="button" variant="outline-secondary">
-                Cancel
+                {t("NoteForm.Button.cancel")}
               </Button>
             </Link>
           </Stack>

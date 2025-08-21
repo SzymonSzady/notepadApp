@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import type { NoteData, Tag } from "./App";
 import { NoteForm } from "./NoteForm";
 import { useNote } from "./NoteLayout";
+import { useTranslation } from "react-i18next";
 
 type EditNotePropos = {
   onSubmit: (id: string, data: NoteData) => void;
@@ -15,6 +16,8 @@ export function EditNote({
   availableTags,
 }: EditNotePropos) {
   const note = useNote();
+  const { t } = useTranslation();
+
   return (
     <>
       <motion.div
@@ -23,7 +26,7 @@ export function EditNote({
         exit={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="mb-4">Edit Note</h1>
+        <h1 className="mb-4">{t("EditNote.title")}</h1>
         <NoteForm
           title={note.title}
           markdown={note.markdown}

@@ -3,6 +3,7 @@ import { useNote } from "./NoteLayout";
 import { Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type NotePropos = {
   onDelete: (id: string) => void;
@@ -11,6 +12,7 @@ type NotePropos = {
 export function Note({ onDelete }: NotePropos) {
   const note = useNote();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -36,7 +38,7 @@ export function Note({ onDelete }: NotePropos) {
           <Col xs="auto">
             <Stack gap={2} direction="horizontal">
               <Link to={`/${note.id}/edit`}>
-                <Button variant="primary">Edit</Button>
+                <Button variant="primary">{t("Note.Button.edit")}</Button>
               </Link>
               <Button
                 onClick={() => {
@@ -45,10 +47,12 @@ export function Note({ onDelete }: NotePropos) {
                 }}
                 variant="outline-danger"
               >
-                Delete
+                {t("Note.Button.delete")}
               </Button>
               <Link to="/">
-                <Button variant="outline-secondary">Back</Button>
+                <Button variant="outline-secondary">
+                  {t("Note.Button.back")}
+                </Button>
               </Link>
             </Stack>
           </Col>

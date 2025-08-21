@@ -1,0 +1,47 @@
+{
+  "NoteList": {
+    "Row": {
+      "title": "Notatki",
+
+      "Button": {
+        "create": "Stwórz",
+        "editTags": "Edytuj tagi",
+        "clearStorage": "Wyczyść pamięć"
+      }
+    },
+
+    "Form": {
+      "Row": {
+        "noteName": "Wyszukaj po nazwie notatki",
+        "noteTag": "Wyszukaj po tagach",
+        "select": "Wybierz tag..."
+      }
+    },
+
+    "Modal": {
+      "title": "Edytuj litę tagów"
+    }
+  },
+
+  "Note": {
+    "Button": {
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "back": "Powrót"
+    }
+  },
+
+  "NoteForm": {
+    "title": "Wprowadź nazwę notatki",
+    "tag": "Stwórz lub wybierz tag, opcjonalne",
+    "body": "Treść notatki:",
+    "Button": {
+      "save": "Zapisz",
+      "cancel": "Anuluj"
+    }
+  },
+
+  "EditNote": {
+    "title": "Edycja notatki"
+  }
+}

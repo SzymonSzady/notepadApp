@@ -10,6 +10,8 @@ import { NoteLayout } from "./NoteLayout";
 import { Note } from "./Note";
 import { EditNote } from "./EditNote";
 import { motion } from "framer-motion";
+import LanguageSwitcher from "./LanguageSwitcher";
+import "./App.css";
 
 export type Note = {
   id: string;
@@ -109,6 +111,7 @@ function App() {
       exit={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <LanguageSwitcher />
       <Container className="my-4">
         <Routes>
           <Route
