@@ -1,0 +1,47 @@
+{
+  "NoteList": {
+    "Row": {
+      "title": "Notes",
+
+      "Button": {
+        "create": "Create",
+        "editTags": "Edit Tags",
+        "clearStorage": "Clear Storage"
+      }
+    },
+
+    "Form": {
+      "Row": {
+        "noteName": "Search by the name of note",
+        "noteTag": "Search by the tag",
+        "select": "Select tag..."
+      }
+    },
+
+    "Modal": {
+      "title": "Edit tag list"
+    }
+  },
+
+  "Note": {
+    "Button": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "back": "Back"
+    }
+  },
+
+  "NoteForm": {
+    "title": "Input name of the note",
+    "tag": "Create or select tag, not requireid",
+    "body": "Note content:",
+    "Button": {
+      "save": "Save",
+      "cancel": "Cancel"
+    }
+  },
+
+  "EditNote": {
+    "title": "Note editing"
+  }
+}
