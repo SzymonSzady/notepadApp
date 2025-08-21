@@ -12,9 +12,10 @@ import {
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import type { Tag } from "./App";
-import styles from "./NoteList.module.css";
+import styles from "./styles/NoteList.module.css";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 type SimplifiedNote = {
   tags: Tag[];
@@ -75,6 +76,9 @@ export function NoteList({
         </Col>
         <Col xs="auto">
           <Stack gap={2} direction="horizontal">
+            <div className="language-switcher-wrapper">
+              <LanguageSwitcher />
+            </div>
             <Link to="/new">
               <Button variant="primary">
                 {t("NoteList.Row.Button.create")}

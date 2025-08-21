@@ -3,15 +3,14 @@ import { Container } from "react-bootstrap";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { NewNote } from "./NewNote";
 import { useLocalStorage } from "./useLocalStorage";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { v4 as uuidV4 } from "uuid";
 import { NoteList } from "./NoteList";
 import { NoteLayout } from "./NoteLayout";
 import { Note } from "./Note";
 import { EditNote } from "./EditNote";
 import { motion } from "framer-motion";
-import LanguageSwitcher from "./LanguageSwitcher";
-import "./App.css";
+import "./styles/App.css";
 
 export type Note = {
   id: string;
@@ -104,6 +103,18 @@ function App() {
     });
   }
 
+  useEffect(() => {
+    // Zapobiega poziomemu przesuwaniu
+    const preventHorizontalScroll = () => {
+      if (window.scrollX !== 0) {
+        window.scrollTo(0, window.scrollY);
+      }
+    };
+
+    window.addEventListener("scroll", preventHorizontalScroll);
+    return () => window.removeEventListener("scroll", preventHorizontalScroll);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -111,7 +122,6 @@ function App() {
       exit={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <LanguageSwitcher />
       <Container className="my-4">
         <Routes>
           <Route
